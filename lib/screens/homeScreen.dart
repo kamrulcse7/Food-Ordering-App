@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_ordering_app/components/data/data.dart';
+import 'package:food_ordering_app/widgets/nearByRestaurants.dart';
 import 'package:food_ordering_app/widgets/recentOrder.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -13,7 +14,6 @@ class HomeScreen extends StatelessWidget {
     var screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
-      
       appBar: AppBar(
         backgroundColor: Colors.white,
         // centerTitle: true,
@@ -75,7 +75,7 @@ class HomeScreen extends StatelessWidget {
             width: 06.0,
           ),
         ],
-  
+
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(50),
           child: Container(
@@ -133,9 +133,11 @@ class HomeScreen extends StatelessWidget {
         child: ListView(
           children: [
             RecentOrder(),
+            NearByRestaurants(),
           ],
         ),
       ),
     );
   }
 }
+
