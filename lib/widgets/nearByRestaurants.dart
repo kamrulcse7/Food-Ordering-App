@@ -1,25 +1,30 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:food_ordering_app/components/data/data.dart';
 import 'package:food_ordering_app/components/models/restaurant.dart';
+import 'package:food_ordering_app/screens/restaurantScreen.dart';
 
-class NearByRestaurants extends StatelessWidget {
+class NearByRestaurants extends StatefulWidget {
   const NearByRestaurants({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<NearByRestaurants> createState() => _NearByRestaurantsState();
+}
+
+class _NearByRestaurantsState extends State<NearByRestaurants> {
   _nearByRestaurants() {
     List<Widget> restaurantList = [];
     restaurants.forEach((Restaurant restaurant) {
       restaurantList.add(
         InkWell(
-          // onTap: () {
-          //   Navigator.of(context).push(
-          //     MaterialPageRoute(builder: (context) => Container()),
-          //   );
-          // },
+          onTap: () => Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => RestaurantScreen(restaurant: restaurant),
+            ),
+          ),
           child: Container(
-            padding: const EdgeInsets.only(top: 18.0, bottom: 20.0),
+            padding: const EdgeInsets.only(bottom: 20.0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20.0),
               child: Container(
@@ -108,6 +113,7 @@ class NearByRestaurants extends StatelessWidget {
             'Near by Restaurants',
             style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w600),
           ),
+          SizedBox(height: 16.0,),
           _nearByRestaurants(),
         ],
       ),
